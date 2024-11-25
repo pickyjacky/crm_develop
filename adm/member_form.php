@@ -249,7 +249,10 @@ $mb_tel3 = substr($mb_tel, 7);      // 끝자리
       var phpArray = <?= json_encode($mb, JSON_UNESCAPED_UNICODE); ?>;
       console.log("mb:" , phpArray)
 </script>
-
+<div class="mb_title">
+    <h1>* 회원 정보</h1>
+    <h1>* 진료 정보</h1>
+</div>
 <div class="tbl_frm01 tbl_wrap">
     <table>
     <caption><?php echo $g5['title']; ?></caption>
@@ -260,24 +263,34 @@ $mb_tel3 = substr($mb_tel, 7);      // 끝자리
         <col>
     </colgroup>
     <tbody>
+
+    <!-- ID -->
     <tr>
         <th scope="row"><label for="mb_id">아이디(차트번호)<?php echo $sound_only ?></label></th>
         <td>
             <input type="text" name="mb_id" value="<?php echo $mb['mb_id'] ?>" id="mb_id" <?php echo $required_mb_id ?> class="frm_input <?php echo $required_mb_id_class ?>" size="15"  maxlength="20">
             <?php if ($w=='u'){ ?><a href="./boardgroupmember_form.php?mb_id=<?php echo $mb['mb_id'] ?>" class="btn_frmline">접근가능그룹보기</a><?php } ?>
         </td>
+    </tr>
+
+    <!-- PW -->
+    <tr>
         <th scope="row"><label for="mb_password">비밀번호<?php echo $sound_only ?></label></th>
         <td><input type="password" name="mb_password" id="mb_password" <?php echo $required_mb_password ?> class="frm_input <?php echo $required_mb_password ?>" size="15" maxlength="20"></td>
     </tr>
     <tr>
         <th scope="row"><label for="mb_name">이름(실명)<strong class="sound_only">필수</strong></label></th>
         <td><input type="text" name="mb_name" value="<?php echo $mb['mb_name'] ?>" id="mb_name" required class="required frm_input" size="15"  maxlength="20"></td>
+    </tr>
+
+    <tr>
         <th scope="row"><label for="mb_birth">생년월일<strong class="sound_only">필수</strong></label></th>
         <td>
             <input type="text" name="mb_birth" value="<?php echo $mb['mb_birth'] ?>" id="mb_birth" required class="required frm_input datepicker"  size="15" max="9999-12-31"  onclick="birth()">
             <label for="mb_nick">ex) 2003-01-01</label>
         </td>
     </tr>
+
     <tr>
         <th scope="row"><label for="mb_level">회원 권한</label></th>
         <td>
@@ -295,18 +308,17 @@ $mb_tel3 = substr($mb_tel, 7);      // 끝자리
             </select>
            
         </td>
+    </tr>
+    <tr>
         <th scope="row"><label for="mb_8">성별<strong class="sound_only">필수</strong></label></th>
-        <td colspan="2">
-            <div>
-                <input type="radio" name="mb_8" value="남" id="mb_man" required class="required frm_input" <?=$mb['mb_8'] =='남'? 'checked' : '' ?>>
-                <label for="mb_man">남자</label>
-            </div>
-            <div>
-                <input type="radio" name="mb_8" value="여" id="mb_woman" required class="required frm_input" <?=$mb['mb_8'] =='여'? 'checked' : '' ?>>
-                <label for="mb_woman">여자</label>
-            </div>
+        <td>
+            <input type="radio" name="mb_8" value="남" id="mb_man" required class="required frm_input" <?=$mb['mb_8'] =='남'? 'checked' : '' ?>>
+            <label for="mb_man">남자</label>
+            <input type="radio" name="mb_8" value="여" id="mb_woman" required class="required frm_input" <?=$mb['mb_8'] =='여'? 'checked' : '' ?>>
+            <label for="mb_woman">여자</label>
         </td>
     </tr>
+
     <tr>
         <th scope="row">
             <label for="mb_hp">휴대폰번호</label>
@@ -325,7 +337,9 @@ $mb_tel3 = substr($mb_tel, 7);      // 끝자리
             <input type="text" name="mb_hp2" value="<?=$mb_hp2 ?>" id="mb_hp2" class="frm_input" required size="4" maxlength="4"> -
             <input type="text" name="mb_hp3" value="<?=$mb_hp3 ?>" id="mb_hp3" class="frm_input" required size="4" maxlength="4">
         </td>
-        <th scope="row">
+    </tr>
+    <tr>
+    <th scope="row">
             <label for="mb_tel">보호자 휴대폰번호</label>
         </th>
         <td>
@@ -345,7 +359,7 @@ $mb_tel3 = substr($mb_tel, 7);      // 끝자리
     </tr>
     <tr>
         <th scope="row"><label for="mb_img">회원이미지</label></th>
-        <td colspan="3">
+        <td>
             <?php echo help('이미지 크기는 <strong>넓이 '.$config['cf_member_img_width'].'픽셀 높이 '.$config['cf_member_img_height'].'픽셀</strong>로 해주세요.') ?>
             <input type="file" name="mb_img" id="mb_img">
             <?php
@@ -358,6 +372,12 @@ $mb_tel3 = substr($mb_tel, 7);      // 끝자리
             ?>
         </td>
     </tr>
+
+    </tbody>
+    </table>
+    
+    <table>
+    <tbody>
     <tr>
         <th scope="row"><label for="mb_signature">담당 의료진</label></th>
         <td colspan="3">
