@@ -76,17 +76,9 @@ $colspan = 16;
 
 <label for="sfl" class="sound_only">검색대상</label>
 <select name="sfl" id="sfl">
-    <option value="mb_id"<?php echo get_selected($sfl, "mb_id"); ?>>회원아이디</option>
-    <option value="mb_nick"<?php echo get_selected($sfl, "mb_nick"); ?>>닉네임</option>
+    <option value="mb_id"<?php echo get_selected($sfl, "mb_id"); ?>>차트번호</option>
     <option value="mb_name"<?php echo get_selected($sfl, "mb_name"); ?>>이름</option>
-    <option value="mb_level"<?php echo get_selected($sfl, "mb_level"); ?>>권한</option>
-    <option value="mb_email"<?php echo get_selected($sfl, "mb_email"); ?>>E-MAIL</option>
-    <option value="mb_tel"<?php echo get_selected($sfl, "mb_tel"); ?>>전화번호</option>
-    <option value="mb_hp"<?php echo get_selected($sfl, "mb_hp"); ?>>휴대폰번호</option>
-    <!-- <option value="mb_point"<?php echo get_selected($sfl, "mb_point"); ?>>포인트</option> -->
-    <option value="mb_datetime"<?php echo get_selected($sfl, "mb_datetime"); ?>>가입일시</option>
-    <option value="mb_ip"<?php echo get_selected($sfl, "mb_ip"); ?>>IP</option>
-    <option value="mb_recommend"<?php echo get_selected($sfl, "mb_recommend"); ?>>추천인</option>
+    <option value="mb_tel"<?php echo get_selected($sfl, "mb_tel"); ?>>본인번호</option>
 </select>
 <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
 <input type="text" name="stx" value="<?php echo $stx ?>" id="stx" required class="required frm_input">
